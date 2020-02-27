@@ -36,7 +36,9 @@ const Registration = () => {
           onChange={handleChange}
         />
         <label>Password</label>
-        <input type="text" name="password" placeholder="password" />
+        <input type="text" name="password1" placeholder="password" />
+        <input type="text" name="password2" placeholder="password" />
+
         <button type="submit">Register</button>
         <div>
           <div>
