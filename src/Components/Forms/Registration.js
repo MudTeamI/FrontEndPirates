@@ -27,6 +27,7 @@ const Registration = () => {
   return (
     <div className="registration">
       <form onSubmit={handleSubmit}>
+        <h2> Registration </h2>
         <label>UserName</label>
         <input
           type="text"
