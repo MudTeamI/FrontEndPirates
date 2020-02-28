@@ -53,6 +53,7 @@ class Login extends React.Component {
           />
           <div>
             <button> Login </button>
+            <button> Remember Me</button>
             <div>
               <Link to="/registration">Don't have an account?</Link>
             </div>
