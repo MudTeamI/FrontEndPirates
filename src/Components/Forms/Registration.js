@@ -28,15 +28,19 @@ const Registration = () => {
     <div className="registration">
       <form onSubmit={handleSubmit}>
         <h2> Registration </h2>
-        <label>UserName</label>
+        <label>Username</label>
         <input
           type="text"
           name="username"
-          placeholder="UserName"
+          placeholder="Username"
           onChange={handleChange}
         />
         <label>Password</label>
-        <input type="text" name="password" placeholder="password" />
+        <input type="text" name="password1" placeholder="password" />
+
+        <label>Confirm Password</label>
+        <input type="text" name="password2" placeholder="confirm password" />
+
         <button type="submit">Register</button>
         <div>
           <div>
