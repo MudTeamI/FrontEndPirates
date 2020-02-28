@@ -1,5 +1,6 @@
 import React from "react"
 import axios from "axios"
+import "../../Styles/login.css"
 import { Link } from "react-router-dom"
 
 class Login extends React.Component {
@@ -34,20 +35,26 @@ class Login extends React.Component {
     return (
       <div className="Login">
         <form onSubmit={this.handleSubmit}>
-          <h2> Login </h2>
-          <label>UserName</label>
+          <div>
+            <h2> Login </h2>
+          </div>
+          <div>
+            <label>Username</label>
+          </div>
           <input
             type="text"
             name="username"
-            placeholder="UserName"
+            placeholder="Captain_Morgan"
             onChange={this.handleChange}
             value={this.state.credentials.username}
           />
-          <label>Password</label>
+          <div>
+            <label>Password</label>
+          </div>
           <input
             type="text"
             name="password"
-            placeholder="password"
+            placeholder="********"
             onChange={this.handleChange}
             value={this.state.credentials.password}
           />

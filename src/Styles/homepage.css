@@ -1,6 +1,7 @@
 .container {
   position: relative;
   display: flex;
+  justify-content: center;
 }
 img {
   width: 100%;
@@ -8,6 +9,8 @@ img {
 }
 
 .title {
+  display: flex;
+  justify-content: center;
   border: 2px solid black;
   width: 35%;
   height: 37%;
@@ -19,11 +22,18 @@ img {
   font-size: 18px;
   background: white;
 }
-
 .paragraph {
+  justify-content: center;
+}
+
+a {
   background: dodgerblue;
   display: flex;
   color: white;
   width: 25%;
+  text-decoration: none;
   justify-content: center;
+  padding: 15px;
+  border-radius: 5px;
+  margin: 0px;
 }
