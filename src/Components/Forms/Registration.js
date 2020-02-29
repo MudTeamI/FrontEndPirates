@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react"
 import axios from "axios"
+import "../../Styles/forms.css"
 import { Link } from "react-router-dom"
 
 const Registration = () => {
   const [user, setUser] = useState({
     username: "",
-    password: ""
+    password1: "",
+    password2: ""
   })
   const [error, setError] = useState()
   useEffect(() => {
@@ -21,25 +23,33 @@ const Registration = () => {
     e.prevent.Default()
     const newUser = {
       username: "",
-      password: ""
+      password1: "",
+      password2: ""
     }
   }
   return (
-    <div className="registration">
+    <div className="formContainer">
       <form onSubmit={handleSubmit}>
-        <h2> Registration </h2>
-        <label>Username</label>
+        <div>
+          <h2> Registration </h2>
+        </div>
+        <div>
+          <label>Username</label>
+        </div>
         <input
           type="text"
           name="username"
-          placeholder="Username"
+          placeholder="Jack_Sparrow"
           onChange={handleChange}
         />
-        <label>Password</label>
-        <input type="text" name="password1" placeholder="password" />
-
-        <label>Confirm Password</label>
-        <input type="text" name="password2" placeholder="confirm password" />
+        <div>
+          <label>Password</label>
+        </div>
+        <input type="password" name="password1" placeholder="**********" />
+        <div>
+          <label>Confirm Password</label>
+        </div>
+        <input type="password" name="password2" placeholder="**********" />
 
         <button type="submit">Register</button>
         <div>

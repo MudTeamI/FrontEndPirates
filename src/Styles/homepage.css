@@ -1,19 +1,20 @@
 .container {
   position: relative;
-  display: flex;
-  justify-content: center;
+  overflow: hidden;
 }
+
 img {
-  width: 100%;
+  width: 100vw;
   height: 100vh;
 }
 
 .title {
   display: flex;
   justify-content: center;
+  flex-direction: column;
   border: 2px solid black;
-  width: 35%;
-  height: 37%;
+  width: 30%;
+  height: 35%;
   border-radius: 10px;
   position: absolute;
   top: 50%;
@@ -22,18 +23,24 @@ img {
   font-size: 18px;
   background: white;
 }
+.acontainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
 .paragraph {
+  display: flex;
   justify-content: center;
 }
 
 a {
   background: dodgerblue;
-  display: flex;
   color: white;
-  width: 25%;
+  width: 45%;
   text-decoration: none;
   justify-content: center;
-  padding: 15px;
+  padding: 0 19px;
   border-radius: 5px;
   margin: 0px;
+  flex-direction: row;
 }
