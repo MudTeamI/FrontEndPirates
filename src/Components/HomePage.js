@@ -14,7 +14,7 @@ const HomePage = () => {
         <div>
           <h2>Pillage and Plunder</h2>
         </div>
-        <div>
+        <div className="acontainer">
           <div className="paragraph">
             <a href="/login">Sign In</a>
           </div>
