@@ -7,8 +7,7 @@ const HomePage = () => {
     <div className="container">
       <img
         src={Pirate}
-        alt="This is the background image to the
-      homepage"
+        alt="Pirate ship heading towards a cave"
       />
       <div className="title">
         <div>
