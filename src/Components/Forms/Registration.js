@@ -18,7 +18,7 @@ function Register(props) {
     } else {
       axios
         .post(
-          "// https://lambda-mud-test.herokuapp.com/api/registration",
+          "https://lambda-mud-test.herokuapp.com/api/registration",
           register
         )
         .then(res => {
