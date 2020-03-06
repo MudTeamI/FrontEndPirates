@@ -13,11 +13,11 @@ const Login = ({ history }) => {
 
   const handleSubmit = event => {
     event.preventDefault()
-    Axios.post("https://lambda-mud-test.herokuapp.com/api/login/", creds)
+    Axios.post("https://pirates-backend.herokuapp.com/api/login/", creds)
       .then(res => {
         console.log(res)
-        localStorage.setItem("token", res.data.payload)
-        history.push("/home")
+        localStorage.setItem("token", res.data.key)
+        history.push("/roommap")
       })
       .catch(err => console.log(err.response))
   }

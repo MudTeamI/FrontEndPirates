@@ -18,11 +18,11 @@ function Register(props) {
     } else {
       axios
         .post(
-          "// https://lambda-mud-test.herokuapp.com/api/registration",
+          "https://pirates-backend.herokuapp.com/api/registration/",
           register
         )
         .then(res => {
-          localStorage.setItem("token", res.data.token) // pass token
+          localStorage.setItem("token", res.data.key) // pass token
           props.history.push("/roommap")
         })
         .catch(error => {
@@ -57,7 +57,7 @@ function Register(props) {
         <div>
           <input
             type="password"
-            name="password"
+            name="password1"
             placeholder="*********"
             value={props.password1}
             onChange={handleChange}
@@ -68,7 +68,7 @@ function Register(props) {
         <div>
           <input
             type="password"
-            name="password"
+            name="password2"
             placeholder="*********"
             value={props.password2}
             onChange={handleChange}
