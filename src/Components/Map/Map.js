@@ -116,7 +116,7 @@ const myConfig = {
     strokeColor: "none",
     strokeWidth: 2,
     svg: "",
-    symbolType: "diamond"
+    symbolType: "triangle"
   },
   link: {
     color: "#d3d3d3",
