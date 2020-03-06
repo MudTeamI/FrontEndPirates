@@ -5,10 +5,7 @@ body {
   background: hsl(190, 94%, 19%);
 }
 .formContainer {
-  /* display: flex;
-  justify-content: center;
-  align-items: center; */
-  margin-top: 60%;
+  margin-top: 40%;
 }
 
 form {
@@ -18,10 +15,11 @@ form {
   background: white;
   width: 100%;
   border-radius: 10px;
+  padding: 35px;
 }
 
-input {
-  width: 80%;
+.input {
+  width: 50%;
 }
 button {
   background: #035060;
