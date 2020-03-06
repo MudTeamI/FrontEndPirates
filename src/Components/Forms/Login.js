@@ -1,72 +1,57 @@
-import React from "react"
-import axios from "axios"
+import React, { useState } from "react"
+import Axios from "axios"
 import "../../Styles/forms.css"
-import { Link } from "react-router-dom"
 
-class Login extends React.Component {
-  state = {
-    credentials: {
-      username: "",
-      password: ""
-    }
+const Login = ({ history }) => {
+  const [creds, setCreds] = useState({
+    username: "",
+    password: ""
+  })
+  const handleChange = event => {
+    setCreds({ ...creds, [event.target.name]: event.target.value })
   }
-  handleSubmit = event => {
+
+  const handleSubmit = event => {
     event.preventDefault()
-    axios
-      .post("https://lambda-mud-test.herokuapp.com/", this.state.credentials)
+    Axios.post("https://lambda-mud-test.herokuapp.com/api/login/", creds)
       .then(res => {
         console.log(res)
-        localStorage.setItem("token", res.data.token)
-        this.props.history.push("/homepage")
+        localStorage.setItem("token", res.data.payload)
+        history.push("/home")
       })
-      .catch(error => {
-        console.log("This is an error from Login", error)
-      }, [])
+      .catch(err => console.log(err.response))
   }
-  handleChange = event => {
-    this.setState({
-      credentials: {
-        ...this.state.credentials,
-        [event.target.name]: event.target.value
-      }
-    })
-  }
-  render() {
-    return (
-      <div className="formContainer">
-        <form onSubmit={this.handleSubmit}>
-          <div>
-            <h2> Login </h2>
-          </div>
-          <div>
-            <label>Username</label>
-          </div>
+
+  return (
+    <div className="formContainer">
+      <form onSubmit={handleSubmit}>
+        <h2> Sign In </h2>
+        <label> Username </label>
+        <div>
           <input
+            className="input"
             type="text"
             name="username"
-            placeholder="Captain_Morgan"
-            onChange={this.handleChange}
-            value={this.state.credentials.username}
+            placeholder="Jack_Sparrow"
+            onChange={handleChange}
+            value={creds.username}
           />
-          <div>
-            <label>Password</label>
-          </div>
+        </div>
+        <label> Password </label>
+        <div>
           <input
+            className="input"
             type="password"
             name="password"
-            placeholder="**********"
-            onChange={this.handleChange}
-            value={this.state.credentials.password}
+            placeholder="*********"
+            onChange={handleChange}
+            value={creds.password}
           />
-          <div>
-            <button> Login </button>
-            <div>
-              <Link to="/registration">Don't have an account?</Link>
-            </div>
-          </div>
-        </form>
-      </div>
-    )
-  }
+        </div>
+        <button type="submit">Sign In</button>
+      </form>
+    </div>
+  )
 }
+
 export default Login
