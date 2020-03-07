@@ -12,32 +12,26 @@ function Register(props) {
 
   const handleSubmit = event => {
     event.preventDefault()
-    const { password1, password2 } = register
-    if (password1 !== password2) {
-      console.log("password does not match")
-    } else {
-      axios
-        .post(
-          "https://pirates-backend.herokuapp.com/api/registration/",
-          register
-        )
-        .then(res => {
-          localStorage.setItem("token", res.data.key) // pass token
-          props.history.push("/game")
-        })
-        .catch(error => {
-          console.log("error from register components", error)
-        }, [])
-    }
+    axios
+      .post("https://pirates-backend.herokuapp.com/api/registration/", register)
+      .then(res => {
+        console.log("res from post() on registertion component", res)
+        localStorage.setItem("key", res.data.key)
+        props.history.push("/login")
+      })
+      .catch(error => {
+        console.log("error from register components", error)
+      }, [])
   }
 
-  const handleChange = event => {
+  const handleChange = user => event => {
+    console.log(event)
     setRegister({
       ...register,
-      [event.target.name]: event.target.value
+      [user]: event.target.value
     })
   }
-
+  console.log(register)
   return (
     <div className="formContainer">
       <form onSubmit={handleSubmit}>
@@ -49,7 +43,7 @@ function Register(props) {
             name="username"
             placeholder="Captain_Morgan"
             value={props.username}
-            onChange={handleChange}
+            onChange={handleChange("username")}
             required
           />
         </div>
@@ -57,10 +51,10 @@ function Register(props) {
         <div>
           <input
             type="password"
-            name="password1"
+            name="password"
             placeholder="*********"
             value={props.password1}
-            onChange={handleChange}
+            onChange={handleChange("password1")}
             required
           />
         </div>
@@ -68,10 +62,10 @@ function Register(props) {
         <div>
           <input
             type="password"
-            name="password2"
+            name="password"
             placeholder="*********"
             value={props.password2}
-            onChange={handleChange}
+            onChange={handleChange("password2")}
             required
           />
         </div>

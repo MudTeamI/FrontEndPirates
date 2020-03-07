@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import Axios from "axios"
+import axios from "axios"
 import "../../Styles/forms.css"
 
 const Login = ({ history }) => {
@@ -13,11 +13,12 @@ const Login = ({ history }) => {
 
   const handleSubmit = event => {
     event.preventDefault()
-    Axios.post("https://pirates-backend.herokuapp.com/api/login/", creds)
+    axios
+      .post("https://pirates-backend.herokuapp.com/api/login/", creds)
       .then(res => {
         console.log(res)
         localStorage.setItem("token", res.data.key)
-        history.push("/game")
+        history.push("/roommap")
       })
       .catch(err => console.log(err.response))
   }

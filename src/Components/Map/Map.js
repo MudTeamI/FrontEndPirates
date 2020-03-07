@@ -78,7 +78,7 @@ const seed = [
     east: 0,
     west: 0
   }
-];
+]
 
 const myConfig = {
   automaticRearrangeAfterDropNode: true,
@@ -137,20 +137,18 @@ const myConfig = {
     semanticStrokeWidth: true,
     strokeWidth: 1.5
   }
-};
+}
 
 const Map = props => {
-  
-
-  console.log(props.mapData);
+  console.log(props.mapData)
 
   const south_links = seed
     .filter(node => node.south !== 0)
-    .map(link => ({ source: link.id, target: link.south }));
+    .map(link => ({ source: link.id, target: link.south }))
 
   const east_links = seed
     .filter(node => node.east !== 0)
-    .map(link => ({ source: link.id, target: link.east }));
+    .map(link => ({ source: link.id, target: link.east }))
 
   const graph = {
     nodes: seed.map(node => ({
@@ -163,7 +161,7 @@ const Map = props => {
       svg: node.id === gameData.current_room_id ? 'https://www.svgrepo.com/show/275524/pirate-ship.svg' : null
     })),
     links: [...south_links, ...east_links]
-  };
+  }
 
   return (
     <StyledMap>
@@ -176,4 +174,4 @@ const Map = props => {
   );
 };
 
-export default Map;
+export default Map

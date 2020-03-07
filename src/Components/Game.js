@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import Map from "./Map/Map";
 import axios from "axios";
 import styled from 'styled-components';
+import Init from "./Map/Init"
 
 import TextBox from './TextBox';
 
@@ -21,20 +22,21 @@ const InternalContainer = styled.div`
 `
 
 const Game = () => {
-  const [mapData, setMapData] = useState();
-  const [isLoading, setIsLoading] = useState(false);
+  const [mapData, setMapData] = useState()
+  const [isLoading, setIsLoading] = useState(false)
 
-  // useEffect(() => {
-  //   setIsLoading(true)
-  //   axios.get('http://lambda-mud-test.herokuapp.com/api/adv/rooms/')
-  //       .then(res => {
-  //           setMapData(JSON.parse(res.data.rooms))
-  //           setIsLoading(false)
-  //       })
-  //       .catch(err => {
-  //           console.log(err)
-  //       })
-  // }, []);
+  useEffect(() => {
+    setIsLoading(true)
+    axios
+      .get("http://lambda-mud-test.herokuapp.com/api/adv/rooms/")
+      .then(res => {
+        setMapData(JSON.parse(res.data.rooms))
+        setIsLoading(false)
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  }, [])
 
   // console.log(mapData)
 
@@ -45,8 +47,10 @@ const Game = () => {
           <TextBox />
           <Map />
         </InternalContainer>
+        <Init />
     </GameContainer>
   );
 };
+  
 
-export default Game;
+export default Game
