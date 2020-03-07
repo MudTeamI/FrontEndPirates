@@ -23,7 +23,7 @@ function Register(props) {
         )
         .then(res => {
           localStorage.setItem("token", res.data.key) // pass token
-          props.history.push("/roommap")
+          props.history.push("/game")
         })
         .catch(error => {
           console.log("error from register components", error)

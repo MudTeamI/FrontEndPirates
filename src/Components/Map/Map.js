@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Graph } from "react-d3-graph";
+import styled from 'styled-components';
 
+const StyledMap = styled.div`
+  border: 5px solid black;
+`
 const root_x = 200;
 const root_y = 200;
 const multiplier = 30;
 
 const gameData = {
-    current_room_id: 1
+    current_room_id: 3
 }
 
 const seed = [
@@ -90,8 +94,8 @@ const myConfig = {
   minZoom: 0.1,
   nodeHighlightBehavior: false,
   panAndZoom: false,
-  staticGraph: false,
-  staticGraphWithDragAndDrop: true,
+  staticGraph: true,
+  staticGraphWithDragAndDrop: false,
   width: 400,
   d3: {
     alphaTarget: [-10, 10],
@@ -153,19 +157,22 @@ const Map = props => {
       ...node,
       x: node.x * multiplier + root_x,
       y: node.y * multiplier + root_y,
-      color: node.id === gameData.current_room_id ? "green" : "gray"
+      color: node.id === gameData.current_room_id ? "green" : "gray",
+      symbolType: node.id === gameData.current_room_id ? "triangle" : "circle",
+      size: node.id === gameData.current_room_id ? "350" : "50",
+      svg: node.id === gameData.current_room_id ? 'https://www.svgrepo.com/show/275524/pirate-ship.svg' : null
     })),
     links: [...south_links, ...east_links]
   };
 
   return (
-    <div>
+    <StyledMap>
       {seed ? (
         <Graph id="graph-id" data={graph} config={myConfig} />
       ) : (
         <div>Loading...</div>
       )}
-    </div>
+    </StyledMap>
   );
 };
 

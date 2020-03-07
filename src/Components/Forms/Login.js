@@ -17,7 +17,7 @@ const Login = ({ history }) => {
       .then(res => {
         console.log(res)
         localStorage.setItem("token", res.data.key)
-        history.push("/roommap")
+        history.push("/game")
       })
       .catch(err => console.log(err.response))
   }
