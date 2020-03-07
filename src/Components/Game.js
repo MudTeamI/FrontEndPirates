@@ -1,30 +1,33 @@
-import React, {useEffect, useState} from "react";
-import Map from "./Map/Map";
-import axios from "axios";
+import React, { useEffect, useState } from "react"
+import Map from "./Map/Map"
+import axios from "axios"
+import Init from "./Map/Init"
 
 const Game = () => {
-  const [mapData, setMapData] = useState();
-  const [isLoading, setIsLoading] = useState(false);
+  const [mapData, setMapData] = useState()
+  const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
     setIsLoading(true)
-    axios.get('http://lambda-mud-test.herokuapp.com/api/adv/rooms/')
-        .then(res => {
-            setMapData(JSON.parse(res.data.rooms))
-            setIsLoading(false)
-        })
-        .catch(err => {
-            console.log(err)
-        })
-  }, []);
+    axios
+      .get("http://lambda-mud-test.herokuapp.com/api/adv/rooms/")
+      .then(res => {
+        setMapData(JSON.parse(res.data.rooms))
+        setIsLoading(false)
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  }, [])
 
   console.log(mapData)
 
   return (
     <div>
-        {mapData ? <Map mapData={mapData} /> : <div>Loading...</div>}
+      {mapData ? <Map mapData={mapData} /> : <div>Loading...</div>}
+      <Init />
     </div>
-  );
-};
+  )
+}
 
-export default Game;
+export default Game

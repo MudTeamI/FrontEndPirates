@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { Graph } from "react-d3-graph";
+import React, { useState, useEffect } from "react"
+import axios from "axios"
+import { Graph } from "react-d3-graph"
 
-const root_x = 200;
-const root_y = 200;
-const multiplier = 30;
+const root_x = 200
+const root_y = 200
+const multiplier = 30
 
 const gameData = {
-    current_room_id: 1
+  current_room_id: 1
 }
 
 const seed = [
@@ -74,7 +74,7 @@ const seed = [
     east: 0,
     west: 0
   }
-];
+]
 
 const myConfig = {
   automaticRearrangeAfterDropNode: true,
@@ -133,20 +133,18 @@ const myConfig = {
     semanticStrokeWidth: true,
     strokeWidth: 1.5
   }
-};
+}
 
 const Map = props => {
-  
-
-  console.log(props.mapData);
+  console.log(props.mapData)
 
   const south_links = seed
     .filter(node => node.south !== 0)
-    .map(link => ({ source: link.id, target: link.south }));
+    .map(link => ({ source: link.id, target: link.south }))
 
   const east_links = seed
     .filter(node => node.east !== 0)
-    .map(link => ({ source: link.id, target: link.east }));
+    .map(link => ({ source: link.id, target: link.east }))
 
   const graph = {
     nodes: seed.map(node => ({
@@ -156,7 +154,7 @@ const Map = props => {
       color: node.id === gameData.current_room_id ? "green" : "gray"
     })),
     links: [...south_links, ...east_links]
-  };
+  }
 
   return (
     <div>
@@ -166,7 +164,7 @@ const Map = props => {
         <div>Loading...</div>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default Map;
+export default Map
