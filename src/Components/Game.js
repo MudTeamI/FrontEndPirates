@@ -22,32 +22,28 @@ const InternalContainer = styled.div`
 `
 
 const Game = () => {
+  const [gameData, setGameData] = useState({current_room_id: 2})
   const [mapData, setMapData] = useState()
-  const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
-    setIsLoading(true)
     axios
-      .get("http://lambda-mud-test.herokuapp.com/api/adv/rooms/")
+      .get("https://pirates-backend.herokuapp.com/api/adv/rooms")
       .then(res => {
-        setMapData(JSON.parse(res.data.rooms))
-        setIsLoading(false)
+        setMapData(res.data)
       })
       .catch(err => {
         console.log(err)
       })
   }, [])
 
-  // console.log(mapData)
-
   return (
     <GameContainer>
         <h1>Pillage and Plunder</h1>
         <InternalContainer>
           <TextBox />
-          <Map />
+          {mapData ? <Map gameData={gameData} setGameData={setGameData} mapData={mapData} /> : <div>Loading...</div>}
         </InternalContainer>
-        <Init />
+        {/* <Init gameData={gameData} setGameData={setGameData} /> */}
     </GameContainer>
   );
 };

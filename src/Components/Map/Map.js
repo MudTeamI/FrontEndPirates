@@ -6,79 +6,10 @@ import styled from 'styled-components';
 const StyledMap = styled.div`
   border: 5px solid black;
 `
-const root_x = 200;
-const root_y = 200;
+const root_x = 50;
+const root_y = 50;
 const multiplier = 30;
 
-const gameData = {
-    current_room_id: 3
-}
-
-const seed = [
-  {
-    id: 1,
-    x: 0,
-    y: 0,
-    north: 5,
-    south: 0,
-    east: 0,
-    west: 0
-  },
-  {
-    id: 2,
-    x: -1,
-    y: 0,
-    north: 6,
-    south: 3,
-    east: 0,
-    west: 0
-  },
-  {
-    id: 3,
-    x: -1,
-    y: -1,
-    north: 2,
-    south: 0,
-    east: 0,
-    west: 4
-  },
-  {
-    id: 4,
-    x: -2,
-    y: -1,
-    north: 1,
-    south: 7,
-    east: 3,
-    west: 0
-  },
-  {
-    id: 5,
-    x: 0,
-    y: 1,
-    north: 0,
-    south: 1,
-    east: 0,
-    west: 6
-  },
-  {
-    id: 6,
-    x: -1,
-    y: 1,
-    north: 0,
-    south: 2,
-    east: 5,
-    west: 0
-  },
-  {
-    id: 7,
-    x: -2,
-    y: 0,
-    north: 4,
-    south: 0,
-    east: 0,
-    west: 0
-  }
-]
 
 const myConfig = {
   automaticRearrangeAfterDropNode: true,
@@ -140,32 +71,35 @@ const myConfig = {
 }
 
 const Map = props => {
+
+  
+
   console.log(props.mapData)
 
-  const south_links = seed
-    .filter(node => node.south !== 0)
-    .map(link => ({ source: link.id, target: link.south }))
+  const south_links = props.mapData.rooms
+    .filter(node => node.s !== 0)
+    .map(link => ({ source: link.id, target: link.s }))
 
-  const east_links = seed
-    .filter(node => node.east !== 0)
-    .map(link => ({ source: link.id, target: link.east }))
+  const east_links = props.mapData.rooms
+    .filter(node => node.e !== 0)
+    .map(link => ({ source: link.id, target: link.e }))
 
   const graph = {
-    nodes: seed.map(node => ({
+    nodes: props.mapData.rooms.map(node => ({
       ...node,
       x: node.x * multiplier + root_x,
       y: node.y * multiplier + root_y,
-      color: node.id === gameData.current_room_id ? "green" : "gray",
-      symbolType: node.id === gameData.current_room_id ? "triangle" : "circle",
-      size: node.id === gameData.current_room_id ? "350" : "50",
-      svg: node.id === gameData.current_room_id ? 'https://www.svgrepo.com/show/275524/pirate-ship.svg' : null
+      color: node.id === props.gameData.current_room_id ? "green" : "gray",
+      symbolType: node.id === props.gameData.current_room_id ? "triangle" : "circle",
+      size: node.id === props.gameData.current_room_id ? "350" : "50",
+      svg: node.id === props.gameData.current_room_id ? 'https://www.svgrepo.com/show/275524/pirate-ship.svg' : null
     })),
     links: [...south_links, ...east_links]
   }
 
   return (
     <StyledMap>
-      {seed ? (
+      {props.mapData.rooms ? (
         <Graph id="graph-id" data={graph} config={myConfig} />
       ) : (
         <div>Loading...</div>
