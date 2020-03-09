@@ -5,6 +5,7 @@ import styled from 'styled-components';
 
 const StyledMap = styled.div`
   border: 5px solid black;
+  background-color: dodgerblue;
 `
 const root_x = 50;
 const root_y = 50;
