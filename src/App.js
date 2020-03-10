@@ -7,6 +7,7 @@ import HomePage from "./Components/HomePage"
 import Map from "./Components/Map/Map"
 import Game from "./Components/Game"
 import Init from "./Components/Map/Init"
+import PrivateRoute from './Components/Forms/PrivateRoute'
 
 function App() {
   return (
@@ -15,7 +16,7 @@ function App() {
         <Route exact path="/" component={HomePage} />
         <Route path="/login" component={Login} />
         <Route path="/registration" component={Registration} />
-        <Route path="/roommap" component={Game} />
+        <PrivateRoute path="/roommap" component={Game} />
         <Route path="/init" component={Init} />
       </Router>
     </div>
