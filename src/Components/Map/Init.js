@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import axios from "axios"
 
-const Init = () => {
+const Init = props => {
   const [init, setInit] = useState([])
 
   useEffect(() => {
@@ -16,6 +16,7 @@ const Init = () => {
       .then(res => {
         console.log(res.data)
         setInit(res.data)
+        props.setGameData({current_room_id: res.data.room})
       })
       .catch(err => {
         console.log(err)
@@ -40,6 +41,7 @@ const Init = () => {
       )
       .then(res => {
         setInit(res.data)
+        props.setGameData({current_room_id: res.data.room})
       })
   }
 
