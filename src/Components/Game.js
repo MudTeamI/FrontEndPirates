@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import Map from "./Map/Map";
 import axios from "axios";
 import styled from 'styled-components';
-import Init from "./Map/Init"
+
 
 import TextBox from './TextBox';
 
@@ -40,10 +40,9 @@ const Game = () => {
     <GameContainer>
         <h1>Pillage and Plunder</h1>
         <InternalContainer>
-          <TextBox />
+          <TextBox gameData={gameData} setGameData={setGameData} />
           {mapData ? <Map gameData={gameData} setGameData={setGameData} mapData={mapData} /> : <div>Loading...</div>}
         </InternalContainer>
-        {/* <Init gameData={gameData} setGameData={setGameData} /> */}
     </GameContainer>
   );
 };
