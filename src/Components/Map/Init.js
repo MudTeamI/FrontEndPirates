@@ -5,7 +5,7 @@ const Init = props => {
   const [init, setInit] = useState([])
 
   useEffect(() => {
-    const token = localStorage.getItem("key")
+    const token = localStorage.getItem("token")
     axios
       .get("https://pirates-backend.herokuapp.com/api/adv/init", {
         headers: {
@@ -26,7 +26,7 @@ const Init = props => {
 
   const changeHandler = event => {
     console.log(event)
-    const token = localStorage.getItem("key")
+    const token = localStorage.getItem("token")
     axios
       .post(
         "https://pirates-backend.herokuapp.com/api/adv/move",
